@@ -1,0 +1,282 @@
+/*Create a C++ program that will show the user the following and enter his/her choice:
+**************MENU**************
+[1] PRIME NUMBER
+[2] RIGHT TRIANGLE
+[3] EXIT
+*********************************
+ENTER YOUR CHOICE: _
+***Every valid choice should have system(“cls”) after taking the input*/
+
+#include<iostream>
+#include<iomanip>
+
+using namespace std;
+
+//declaration of statement
+int i, nbr;  
+
+//Function
+int getPrime();
+void getTri(int size);
+
+int main()
+{
+	//declaration statement
+	int decision;
+	int sz;
+	
+	// Return to Main Menu statement
+	bool YN=true;
+	bool InvYN=false;
+	char choice;
+		
+	//executable statement (Input-Process-Output)
+	do
+	{
+		//Input
+		do
+		{
+			system ("cls");
+			cout<<""<<endl;
+			cout<<"**************MENU**************"<<endl;
+			cout<<""<<endl;
+			cout<<"[1] PRIME NUMBER"<<endl;	
+			cout<<""<<endl;
+			cout<<"[2] RIGHT TRIANGLE"<<endl;
+			cout<<""<<endl;
+			cout<<"[3] EXIT"<<endl;
+			cout<<""<<endl;
+			cout<<"*********************************"<<endl;
+			cout<<""<<endl;
+			cout<<"ENTER YOUR CHOICE: ";
+			cin>>decision;
+		}
+		while (decision<1||decision>3);
+			
+			
+		//process
+		switch (decision)
+		{
+			case 1:	
+			{
+				/* [1] PRIME NUMBER:Create a C++ program that would input a number and output if the number entered is
+				PRIME or NOT PRIME. A prime number is a number with a factor of one and only itself.
+				Use function int getPrime() to process if the number is prime or not prime. Use value of 1
+				if the number is prime else use zero.
+				Examples of Prime Numbers are: 2, 3, 5, 7, 11, 19, 23, etc.
+				Sample Output:
+				Enter a Number: 5
+				5 is a Prime Number.
+				Return to Main Menu? [Y/N]: _
+				***If Y then go back to the menu. If N, then terminate the program. */
+				
+				//Get Function	
+				i = getPrime();
+				
+				//Output
+				if (i == 1)
+				{
+					system ("cls");
+					cout<<""<<endl;
+					cout<<"==========PRIME NUMBER=========="<<endl;
+					cout<<""<<endl;
+					cout<<nbr<<" is A PRIME NUMBER."<<endl;
+					cout<<""<<endl;
+				}
+				
+				else 
+				{
+					system ("cls");
+					cout<<""<<endl;
+					cout<<"==========PRIME NUMBER=========="<<endl;
+					cout<<""<<endl;
+					cout<<nbr<<" is NOT A PRIME NUMBER."<<endl;
+					cout<<""<<endl;
+				}	
+			break;
+			}
+					
+			case 2:
+			{
+				/*[2] RIGHT TRIANGLE: Create a C++ program that will ask the user the size of the multiplication table and
+				display it corresponding output on screen. Use function void getTri(int size) to process
+				and output the right triangle. see example below:
+				Sample Output:
+				Enter the Size of Right Triangle: 5
+				1
+				1 2
+				1 2 3
+				1 2 3 4
+				1 2 3 4 5
+				Return to Main Menu? [Y/N]: _
+				***If Y then go back to the menu. If N, then terminate the program. */
+				
+				system("cls");
+				
+				//Input
+				cout<<""<<endl;
+				cout<<"==========RIGHT TRIANGLE=========="<<endl;
+				cout<<""<<endl;
+				cout<<"Please, Enter Size of Right Triangle: ";
+				cin>>sz;
+				
+				//Error Handling
+				do
+				{
+					if (sz<=0)
+					{
+						system("cls");
+						cout<<""<<endl;
+						cout<<"==========RIGHT TRIANGLE=========="<<endl;
+						cout<<""<<endl;
+						cout<<"The number entered is either zero (0) or a negative number (-)"<<endl;
+						cout<<"Please Try Again!"<<endl;
+						cout<<"Enter a positive number or a number greater than zero (0): ";
+						cin>>sz;
+					}	
+					
+				}
+				while (sz<=0);
+				
+				//Get Function
+				getTri(sz);
+				
+			break;
+			}
+					
+			case 3:/*[3] EXIT: End the program*/
+			{
+				system("cls");
+				cout<<""<<endl;
+				cout<<"Program Terminated, Goodbye and Thank You!"<<endl;//Output
+				return (0);
+						
+			break;
+			}
+
+		}
+		
+		/****If Y then go back to the menu. If N, then terminate the program.
+		Hint: Use Switch Case Statement for the choices in the Main Menu. Use Do-While
+		Statement and Continue Statement to validate the choices of 1-5 and Y/N. */
+		do
+		{
+			//Input
+			cout<<"*********************************"<<endl;
+			cout<<"Return to Main Menu [Y/N]?"<<endl;
+			cout<<""<<endl;
+			cout<<"Yes/Y returns to the main menu"<<endl;
+			cout<<"No/N terminates and ends the program"<<endl;
+			cout<<""<<endl;
+			cout<<"What is your choice?: ";
+			cin>>choice;
+			
+			//Process
+			choice=toupper(choice);//"y" --> "Y"
+			
+				if (choice=='Y')
+				{
+					YN=true;
+					InvYN=false;
+				}
+				
+				else if (choice=='N')
+				{
+					YN=false;
+					InvYN=false;
+					system ("cls");
+					cout<<""<<endl;
+					cout<<"Program Terminated, Goodbye and Thank You!"<<endl;//Output
+				}
+				
+				else //Error Handling
+				{
+					system ("cls");
+					cout<<""<<endl;
+					cout<<"Invalid Input, Y/N are the only options, Please Try Again!"<<endl;
+					cout<<""<<endl;
+					InvYN=true;
+				}
+		}
+		while (InvYN == true);
+	}
+	while (YN==true);
+}
+
+int getPrime()//Function for Case 1
+{
+	//declaration statement
+	int n;
+	bool pnum = false;
+					
+	system ("cls");
+					
+	//Input
+	cout<<""<<endl;
+	cout<<"==========PRIME NUMBER=========="<<endl;
+	cout<<""<<endl;
+	cout<<"Please, Enter a Prime Number: ";
+	cin>>nbr;
+	
+					
+	//Error Handling
+	do
+	{
+		if (nbr<1)
+		{
+			system ("cls");
+			cout<<""<<endl;
+			cout<<"==========PRIME NUMBER=========="<<endl;
+			cout<<""<<endl;
+			cout<<"The number entered is either zero (0) or a negative number (-)"<<endl;
+			cout<<"Please Try Again!"<<endl;
+			cout<<"Enter a Positive Number: ";
+			cin>>nbr;
+		}	
+	}
+	while (nbr<1);
+					
+	//Process				
+	if (nbr==1||nbr==0)
+	{
+		pnum = false;
+	}
+				
+	for (n=2; n<nbr; n++)
+	{
+		if (nbr%n==0)
+		{
+			pnum = true;
+		}
+	}
+					
+	if (pnum==true)
+	{				
+		return (0);
+	}
+					
+	else 
+	{					
+		return (1);
+	}
+							
+}
+
+void getTri(int size)//Function for Case 2
+{
+	//Process
+	system("cls");
+	cout<<""<<endl;
+	cout<<"==========RIGHT TRIANGLE=========="<<endl;
+	cout<<""<<endl;
+	
+	for (int a=1; a<=size; a++)
+	{	
+		for (int b=1; b<=a; b++)
+			{
+				cout<<"   "<<b<<"   "; //Output
+			}
+				cout<<""<<endl;
+				cout<<""<<endl;
+	}
+}
